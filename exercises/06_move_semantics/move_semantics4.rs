@@ -9,9 +9,10 @@ mod tests {
     #[test]
     fn move_semantics4() {
         let mut x = Vec::new();
+        // Two pointer (&mut) can't borrom x at the same time
         let y = &mut x;
-        let z = &mut x;
         y.push(42);
+        let z = &mut x;
         z.push(13);
         assert_eq!(x, [42, 13]);
     }
